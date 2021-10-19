@@ -9,7 +9,9 @@ const app = express();
 mongoose.connect(process.env.MONGO_AUTH).then(console.log("Connected to DB!"))
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+}));
 app.use(routes);
 
 app.listen(process.env.PORT || 3333)
